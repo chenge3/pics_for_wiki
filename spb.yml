@@ -1,0 +1,147 @@
+bmc_connection_port: 9101
+compute:
+  boot:
+    boot_order: c
+  cpu:
+    feature: +vmx,+x2apic
+    quantities: 8
+    type: Haswell
+  extra_option: -D /tmp/qemu.log -trace events=/tmp/trace_items
+  memory:
+    size: 4096
+  monitor:
+    chardev:
+      backend: socket
+      host: 127.0.0.1
+      port: 2347
+      server: true
+      wait: false
+    mode: readline
+  networks:
+  - device: vmxnet3
+    mac: 52:54:BE:36:ee:5f
+    network_mode: bridge
+    network_name: br0
+  qemu_bin: /home/infrasim/isilon/qemu/x86_64-softmmu/qemu-system-x86_64
+  storage_backend:
+  - drives:
+    - file: /home/infrasim/spb-ubuntu16.04.qcow2
+      model: SATADOM
+      serial: 20160518AA851134100
+      size: 8
+    max_drive_per_controller: 6
+    type: ahci
+  - drives:
+    - cache: none
+      file: /home/infrasim/drives/sda.img
+      format: qcow2
+      product: ST4000NM0005
+      scsi-id: 3
+      serial: Z4C03DFX
+      size: 8
+      slot_number: 0
+      vendor: SEAGATE
+      wwn: 5764824129059301745
+    - cache: none
+      file: /home/infrasim/drives/sdb.img
+      format: qcow2
+      product: ST4000NM0005
+      scsi-id: 4
+      serial: Z4C03DBN
+      size: 8
+      slot_number: 1
+      vendor: SEAGATE
+      wwn: 5764824129059384214
+    - cache: none
+      file: /home/infrasim/drives/sdc.img
+      format: qcow2
+      product: ST4000NM0005
+      scsi-id: 7
+      serial: Z4C03D5C
+      size: 8
+      slot_number: 4
+      vendor: SEAGATE
+      wwn: 5764824129059307749
+    - cache: none
+      file: /home/infrasim/drives/sdd.img
+      format: qcow2
+      product: PX04SMB160
+      scsi-id: 12
+      serial: 26E0A024T2VD
+      size: 8
+      slot_number: 9
+      vendor: TOSHIBA
+      wwn: 5764611469514216386
+    - cache: none
+      file: /home/infrasim/drives/sda.img
+      format: qcow2
+      product: ST4000NM0005
+      scsi-id: 32
+      serial: Z4C03DFX
+      size: 8
+      slot_number: 0
+      vendor: SEAGATE
+      wwn: 5764824129059301746
+    - cache: none
+      file: /home/infrasim/drives/sdb.img
+      format: qcow2
+      product: ST4000NM0005
+      scsi-id: 33
+      serial: Z4C03DBN
+      size: 8
+      slot_number: 1
+      vendor: SEAGATE
+      wwn: 5764824129059384215
+    - cache: none
+      file: /home/infrasim/drives/sdc.img
+      format: qcow2
+      product: ST4000NM0005
+      scsi-id: 36
+      serial: Z4C03D5C
+      size: 8
+      slot_number: 4
+      vendor: SEAGATE
+      wwn: 5764824129059307750
+    - cache: none
+      file: /home/infrasim/drives/sdd.img
+      format: qcow2
+      product: PX04SMB160
+      scsi-id: 41
+      serial: 26E0A024T2VD
+      size: 8
+      slot_number: 9
+      vendor: TOSHIBA
+      wwn: 5764611469514216387
+    expander-count: 2
+    expander-downstream-start-phy: 11
+    expander-phys: 36
+    expander-upstream-start-phy: 0
+    max_drive_per_controller: 16
+    seses:
+    - channel: 0
+      dae_type: 28
+      lun: 0
+      scsi-id: 28
+      wwn: 5764611469514216499
+    - channel: 0
+      dae_type: 28
+      lun: 0
+      scsi-id: 57
+      wwn: 5764611469514216599
+    type: lsisas3008
+    upstream-phys: 8
+    use_msix: false
+  vnc_display: 2
+ipmi_console_port: 9001
+ipmi_console_ssh: 9301
+name: spb
+racadm:
+  data: /home/infrasim/racadm_data
+  interface: br0
+  password: admin
+  port: 10023
+  username: admin
+serial_port: 9004
+serial_socket: /home/infrasim/.infrasim/spb/.serial
+sol_enable: true
+type: dell_r730xd
